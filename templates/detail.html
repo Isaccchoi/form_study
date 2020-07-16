@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ notice.title }}</h1>
+    <p>
+        {{ notice.content|linebreaksbr }}
+    </p>
+    {% if notice.file %}
+        <a href="{{ notice.file.url }}" download="{{ notice.get_file_name }}">{{ notice.get_file_name }}</a>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'c_notice_update' notice.pk %}">수정</a>
+
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'c_notice_delete' notice.pk %}">삭제</a>
+</body>
+</html>

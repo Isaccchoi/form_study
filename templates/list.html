@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <th>제목</th>
+            <th>내용</th>
+            <th>생성일자</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for notice in object_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'c_notice_detail' notice.pk %}">{{ notice.title }}</a>
+                    </td>
+                    <td>{{ notice.content|truncatechars:50 }}</td>
+                    <td>{{ notice.created_on|date:'Y-m-d H:i' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <a href="{% url 'c_notice_create' %}">생성</a>
+</body>
+</html>
